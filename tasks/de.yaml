@@ -1,0 +1,33 @@
+- name: Setup up autostart on tty1
+  tags: ["de", "system"]
+  become: true
+  ansible.builtin.copy:
+    dest: /home/kindo/.bash_profile
+    owner: kindo
+    group: kindo
+    mode: '0644'
+    content: |
+      if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+        exec startx
+      fi
+
+- name: Get the Kindo wallapaper
+  tags: ["de", "system"]
+  become: true
+  ansible.builtin.uri:
+    url: "http://pkg.kintechnology.io/kin-1920x1080.png"
+    dest: "/home/kindo/.local/share/kindo/wallpaper.png"
+    mode: '0644'
+    owner: kindo
+    group: kindo
+
+- name: Setup autostart Kindo App
+  tags: ["de", "system"]
+  become: true
+  ansible.builtin.copy:
+    dest: /home/kindo/.xinitrc
+    owner: kindo
+    group: kindo
+    mode: '0644'
+    content: |
+      exec kindo-app

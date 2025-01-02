@@ -1,0 +1,5 @@
+- name: Download and Install Kindo App
+  tags: ["install", "packages"]
+  become: true
+  ansible.builtin.apt:
+    deb: "http://pkg.kintechnology.io/kindo-app_arm64.deb"

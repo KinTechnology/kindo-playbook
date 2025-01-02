@@ -1,0 +1,9 @@
+- name: Create XDG data directory for Kindo
+  tags: ["pre"]
+  become: true
+  ansible.builtin.file:
+    path: /home/kindo/.local/share/kindo
+    state: directory
+    owner: kindo
+    group: kindo
+    mode: '0755'

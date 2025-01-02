@@ -1,15 +1,31 @@
-- hosts: localhost
+- name: Kindo Playbook
+  hosts: localhost
+
   pre_tasks:
     - name: Update apt cache
       become: true
-      apt:
-        update_cache: true
       tags: update
+      ansible.builtin.apt:
+        update_cache: true
+
     - name: Update apt packages
       become: true
-      apt:
-        upgrade: full
       tags: update
+      ansible.builtin.apt:
+        upgrade: full
 
   tasks:
-    - include: tasks/core.yaml
+    - name: Prequsites
+      ansible.builtin.include_tasks: tasks/prerequisite.yaml
+
+    - name: Install apt packages
+      ansible.builtin.include_tasks: tasks/packages.yaml
+
+    - name: Create User Kindo
+      ansible.builtin.include_tasks: tasks/user.yaml
+
+    - name: Setup Kindo App
+      ansible.builtin.include_tasks: tasks/kindo-app.yaml
+
+    - name: Setup desktop environment
+      ansible.builtin.include_tasks: tasks/de.yaml

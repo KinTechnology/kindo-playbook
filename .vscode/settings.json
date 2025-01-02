@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.yml": "ansible",
+    "*.yaml": "ansible"
+  },
+  "ansible.python.interpreterPath": "/home/admin/kinda-playbook/.venv/bin/python"
+}

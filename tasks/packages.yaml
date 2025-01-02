@@ -1,0 +1,25 @@
+- name: "Install apt packages"
+  tags: ["packages", "install"]
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - xserver-xorg
+    - xinit
+    - x11-xserver-utils
+    - xwallpaper
+    - xserver-xorg-input-libinput
+    - wget
+    - curl
+    - stterm
+    - suckless-tools
+    - libasound-dev
+
+- name: Install dwm package
+  tags: ["wm", "packages", "install"]
+  become: true
+  ansible.builtin.uri:
+    url: "http://pkg.kintechnology.io/dwm"
+    dest: "/usr/local/bin/"
+    mode: "0755"
