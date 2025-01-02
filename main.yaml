@@ -1,0 +1,15 @@
+- hosts: localhost
+  pre_tasks:
+    - name: Update apt cache
+      become: true
+      apt:
+        update_cache: true
+      tags: update
+    - name: Update apt packages
+      become: true
+      apt:
+        upgrade: full
+      tags: update
+
+  tasks:
+    - include: tasks/core.yaml
