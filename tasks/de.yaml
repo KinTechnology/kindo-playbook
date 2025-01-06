@@ -32,6 +32,24 @@
     content: |
       exec kindo-app
 
+- name: Add cutiepi-panel overlays file
+  tags: ["de", "system"]
+  become: true
+  ansible.builtin.uri:
+    url: "http://pkg.kintechnology.io/cutiepi-panel.dtbo"
+    dest: "/boot/overlays/cutiepi-panel.dtbo"
+    mode: '0755'
+
+- name: Ensure dtoverlay=cutiepi-panel is present under the [all] block
+  tags: ["de", "system"]
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^dtoverlay=cutiepi-panel'
+    line: 'dtoverlay=cutiepi-panel'
+    insertafter: '\[all\]'
+    state: present
+
 - name: Setup touch screen calibration
   tags: ["de", "system"]
   become: true

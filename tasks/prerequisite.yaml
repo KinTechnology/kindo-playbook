@@ -1,9 +1,18 @@
 - name: Create XDG data directory for Kindo
-  tags: ["prerequisite"]
+  tags: ["prerequisite", "de", "system"]
   become: true
   ansible.builtin.file:
     path: /home/kindo/.local/share/kindo
     state: directory
     owner: kindo
     group: kindo
+    mode: '0755'
+
+
+- name: Create overlays directory
+  tags: ["prerequisite", "de", "system"]
+  become: true
+  ansible.builtin.file:
+    path: "/boot/overlays"
+    state: directory
     mode: '0755'

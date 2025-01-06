@@ -1,0 +1,29 @@
+- name: Ensure enable_uart=1 is present under the [all] block
+  tags: ["uart"]
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^enable_uart='
+    line: 'enable_uart=1'
+    insertafter: '\[all\]'
+    state: present
+
+- name: Ensure dtoverlay=uart3 is present under the [all] block
+  tags: ["uart"]
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^dtoverlay=uart3'
+    line: 'dtoverlay=uart3'
+    insertafter: '\[all\]'
+    state: present
+
+- name: Ensure dtoverlay=uart1 is present under the [all] block
+  tags: ["uart"]
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^dtoverlay=uart1'
+    line: 'dtoverlay=uart1'
+    insertafter: '\[all\]'
+    state: present
