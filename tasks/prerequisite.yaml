@@ -1,5 +1,5 @@
 - name: Create XDG data directory for Kindo
-  tags: ["pre"]
+  tags: ["prerequisite"]
   become: true
   ansible.builtin.file:
     path: /home/kindo/.local/share/kindo

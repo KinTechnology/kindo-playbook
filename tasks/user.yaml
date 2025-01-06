@@ -1,5 +1,5 @@
 - name: Create user kindo
-  tags: ["user", "system"]
+  tags: ['user', 'system']
   become: true
   ansible.builtin.user:
     name: kindo
@@ -8,19 +8,20 @@
     groups: sudo
     append: true
     create_home: true
+    home: /home/kindo
     password: "{{ 'kindo' | password_hash('sha512') }}"
 
 - name: Create gettty service directory
-  tags: ["user", "system"]
   become: true
+  tags: ["user", "system"]
   ansible.builtin.file:
     recurse: true
     path: /etc/systemd/system/getty@tty1.service.d/
     state: directory
 
 - name: Create getty service override
-  tags: ["user", "system"]
   become: true
+  tags: ["user", "system"]
   ansible.builtin.copy:
     dest: /etc/systemd/system/getty@tty1.service.d/override.conf
     mode: '0644'
@@ -30,8 +31,8 @@
       ExecStart=-/sbin/agetty --autologin kindo --noclear %I $TERM
 
 - name: Enable getty service
-  tags: ["user", "system"]
   become: true
+  tags: ["user", "system"]
   ansible.builtin.systemd:
     name: getty@tty1.service
     daemon_reload: true

@@ -15,17 +15,22 @@
         upgrade: full
 
   tasks:
-    - name: Prequsites
-      ansible.builtin.include_tasks: tasks/prerequisite.yaml
-
     - name: Install apt packages
+      tags: ["packages", "install"]
       ansible.builtin.include_tasks: tasks/packages.yaml
 
     - name: Create User Kindo
+      tags: ['user', 'system']
       ansible.builtin.include_tasks: tasks/user.yaml
 
-    - name: Setup Kindo App
-      ansible.builtin.include_tasks: tasks/kindo-app.yaml
+    - name: Prequsites
+      tags: ["prerequisite"]
+      ansible.builtin.include_tasks: tasks/prerequisite.yaml
 
     - name: Setup desktop environment
+      tags: ["de", "system"]
       ansible.builtin.include_tasks: tasks/de.yaml
+
+    - name: Setup Kindo App
+      tags: ["kindo-app"]
+      ansible.builtin.include_tasks: tasks/kindo-app.yaml

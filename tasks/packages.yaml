@@ -1,6 +1,6 @@
 - name: "Install apt packages"
-  tags: ["packages", "install"]
   become: true
+  tags: ["packages", "install"]
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
@@ -17,8 +17,8 @@
     - libasound-dev
 
 - name: Install dwm package
-  tags: ["wm", "packages", "install"]
   become: true
+  tags: ["packages", "install"]
   ansible.builtin.uri:
     url: "http://pkg.kintechnology.io/dwm"
     dest: "/usr/local/bin/"

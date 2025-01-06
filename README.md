@@ -33,6 +33,12 @@ pip install -r requirements.txt
 ansible-playbook main.yaml
 ```
 
+5. Run a specific tag
+
+```bash
+ansible-playbook main.yaml --tags user -i inventory.ini
+```
+
 ### Production
 1. Install Ansible on your Raspberry Pi
 
@@ -43,7 +49,7 @@ sudo apt install ansible -y
 2. Run playbook
 
 ```bash
-ansible-pull -U https://github.com/KinTechnology/kindo-playbook main.yaml
+ansible-pull -U https://github.com/KinTechnology/kindo-playbook -i localhost, main.yaml
 ```
 
 ## Contributing
