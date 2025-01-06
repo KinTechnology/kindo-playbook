@@ -31,3 +31,18 @@
     mode: '0644'
     content: |
       exec kindo-app
+
+- name: Setup touch screen calibration
+  tags: ["de", "system"]
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/X11/xorg.conf.d/40-libinput.conf
+    mode: '0644'
+    content: |
+      Section "InputClass"
+        Identifier "libinput touchscreen catchall"
+        MatchIsTouchscreen "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "CalibrationMatrix" "-1 0 1 0 -1 1 0 0 1"
+      EndSection
