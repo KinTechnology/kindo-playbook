@@ -23,3 +23,11 @@
     url: "http://pkg.kintechnology.io/dwm"
     dest: "/usr/local/bin/"
     mode: "0755"
+
+- name: Install nocursor package
+  become: true
+  tags: ["packages", "install"]
+  ansible.builtin.uri:
+    url: "http://pkg.kintechnology.io/nocursor"
+    dest: "/usr/local/bin/"
+    mode: "0755"
