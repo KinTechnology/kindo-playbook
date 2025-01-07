@@ -34,7 +34,7 @@
     - name: Setup Uart
       tags: ["uart"]
       ansible.builtin.include_tasks: tasks/uart.yaml
-      
+
     - name: Setup Kindo App
       tags: ["kindo-app"]
       ansible.builtin.include_tasks: tasks/kindo-app.yaml

@@ -1,0 +1,43 @@
+- name: Add 'dtparam=i2c_vc=on' to /boot/firmware/config.txt
+  tags: ["rtc", "system"]
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^dtparam=i2c_vc=on'
+    line: 'dtparam=i2c_vc=on'
+    insertafter: '\[all\]'
+    state: present
+
+- name: Add 'dtoverlay=i2c-rtc,pcf85063a,i2c_csi_dsi' to /boot/firmware/config.txt
+  tags: ["rtc", "system"]
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: '^dtoverlay=i2c-rtc,pcf85063a,i2c_csi_dsi'
+    line: 'dtoverlay=i2c-rtc,pcf85063a,i2c_csi_dsi'
+    insertafter: '\[all\]'
+    state: present
+
+- name: Set timezone to Asia/Hong_Kong
+  tags: ["rtc", "system"]
+  become: true
+  ansible.builtin.command: timedatectl set-timezone Asia/Hong_Kong
+  register: timezone_status
+  changed_when: "'Asia/Hong_Kong' not in timezone_status.stdout"
+  check_mode: true
+
+- name: Add ntp service
+  tags: ["rtc", "system"]
+  become: true
+  ansible.builtin.command: timedatectl set-ntp true
+  register: ntp_status
+  changed_when: "'NTP synchronized: yes' not in ntp_status.stdout"
+
+- name: Add hwclock service
+  tags: ["rtc", "system"]
+  become: true
+  ansible.builtin.systemd:
+    name: systemd-timesyncd
+    state: started
+    enabled: true
+    daemon_reload: true
