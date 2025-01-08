@@ -1,0 +1,9 @@
+- name: Setup Plymouth
+  become: true
+  tags: ["plymouth"]
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/cmdline.txt
+    regexp: '^quiet splash'
+    line: 'quiet splash'
+    insertafter: EOF
+    state: present
