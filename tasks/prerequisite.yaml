@@ -16,3 +16,13 @@
     path: "/boot/overlays"
     state: directory
     mode: '0755'
+
+- name: Ensure /boot/firmware/ directory exists
+  tags: ["prerequisite", "de", "system"]
+  become: true
+  ansible.builtin.file:
+    path: /home/kindo/.local/share/kindo
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'

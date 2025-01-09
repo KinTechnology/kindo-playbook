@@ -30,13 +30,14 @@ pip install -r requirements.txt
 4. Run playbook
 
 ```bash
-ansible-playbook main.yaml
+ansible-playbook --become main.yaml
+ansible-playbook main.yaml --become -i inventory.ini
 ```
 
 5. Run a specific tag
 
 ```bash
-ansible-playbook main.yaml --tags user -i inventory.ini
+ansible-playbook main.yaml --tags docker --become -i inventory.ini
 ```
 
 ### Production
@@ -49,7 +50,7 @@ sudo apt install ansible -y
 2. Run playbook
 
 ```bash
-ansible-pull -U https://github.com/KinTechnology/kindo-playbook -i localhost, main.yaml
+ansible-pull -U https://github.com/KinTechnology/kindo-playbook --become -i localhost, main.yaml
 ```
 
 ## Contributing

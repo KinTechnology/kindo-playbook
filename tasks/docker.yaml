@@ -1,3 +1,10 @@
+- name: Adding kindo user to docker group
+  tags: ["docker"]
+  ansible.builtin.user:
+    name: kindo
+    groups: docker
+    append: true
+
 - name: Autostart Docker
   tags: ["docker"]
   ansible.builtin.systemd:

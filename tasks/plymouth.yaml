@@ -6,4 +6,3 @@
     regexp: '^quiet splash'
     line: 'quiet splash'
     insertafter: EOF
-    state: present

@@ -1,0 +1,13 @@
+[Unit]
+Description=Kindo UART WebSocket Service
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run --name kindo-uart-ws --device=/dev/ttyAMA3 --device=/dev/ttyS0 -d -p 3000:3000 kintechnology/kindo-uart-ws:0.1
+ExecStop=/usr/bin/docker stop kindo-uart-ws
+ExecStopPost=/usr/bin/docker rm kindo-uart-ws
+
+[Install]
+WantedBy=multi-user.target

@@ -33,12 +33,19 @@
   become: true
   ansible.builtin.command: docker pull kintechnology/kindo-uart-ws:0.1
 
-- name: Run kindo-uart-ws:0.1 container
+- name: Create systemd service file for kindo-uart-ws
   tags: ["uart"]
   become: true
-  ansible.builtin.command: docker run --name kindo-uart-ws --device=/dev/ttyAMA3 --device=/dev/ttyS0 -d -p 3000:3000 kintechnology/kindo-uart-ws:0.1
+  ansible.builtin.template:
+    src: templates/kindo-uart-ws.service.j2
+    dest: /etc/systemd/system/kindo-uart-ws.service
+    mode: '0644'
 
-- name: Ensure kindo-uart-ws is started on boot
+- name: Enable kindo-uart-ws service
   tags: ["uart"]
   become: true
-  ansible.builtin.command: docker update --restart=always kindo-uart-ws
+  ansible.builtin.systemd:
+    name: kindo-uart-ws
+    enabled: true
+    state: started
+    daemon_reload: true
