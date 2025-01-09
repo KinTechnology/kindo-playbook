@@ -41,16 +41,9 @@ ansible-playbook main.yaml --tags docker --become -i inventory.ini
 ```
 
 ### Production
-1. Install Ansible on your Raspberry Pi
 
 ```bash
-sudo apt install ansible -y
-```
-
-2. Run playbook
-
-```bash
-ansible-pull -U https://github.com/KinTechnology/kindo-playbook --become -i localhost, main.yaml
+curl -fssLO http://pkg.kintechnology.io/playbook | bash
 ```
 
 ## Contributing

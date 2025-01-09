@@ -20,7 +20,6 @@
     mode: '0644'
     owner: kindo
     group: kindo
-    force: true
 
 - name: Setup autostart Kindo App
   tags: ["de", "system"]
@@ -30,7 +29,6 @@
     owner: kindo
     group: kindo
     mode: '0644'
-    force: true
     content: |
       exec kindo-app
 
@@ -41,7 +39,6 @@
     url: "http://pkg.kintechnology.io/cutiepi-panel.dtbo"
     dest: "/boot/overlays/cutiepi-panel.dtbo"
     mode: '0755'
-    force: true
 
 - name: Ensure dtoverlay=cutiepi-panel is present under the [all] block
   tags: ["de", "system"]
