@@ -33,3 +33,13 @@
     url: "http://pkg.kintechnology.io/nocursor"
     dest: "/usr/local/bin/"
     mode: "0755"
+
+- name: Install Docker Engine
+  become: true
+  tags: ["packages", "install"]
+  ansible.builtin.shell: |
+    set -o pipefail
+    curl -fsSL https://get.docker.com | sh
+  args:
+    creates: /usr/bin/docker
+    executable: /bin/bash

@@ -1,0 +1,15 @@
+- name: Autostart Docker
+  tags: ["docker"]
+  ansible.builtin.systemd:
+    name: docker
+    enabled: true
+    state: started
+    daemon_reload: true
+
+- name: Autostart containerd
+  tags: ["docker"]
+  ansible.builtin.systemd:
+    name: containerd
+    enabled: true
+    state: started
+    daemon_reload: true

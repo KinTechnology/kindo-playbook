@@ -31,6 +31,10 @@
       tags: ["de", "system"]
       ansible.builtin.include_tasks: tasks/de.yaml
 
+    - name: Setup docker
+      tags: ["docker"]
+      ansible.builtin.include_tasks: tasks/docker.yaml
+
     - name: Setup Uart
       tags: ["uart"]
       ansible.builtin.include_tasks: tasks/uart.yaml
