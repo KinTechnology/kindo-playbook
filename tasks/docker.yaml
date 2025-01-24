@@ -1,5 +1,6 @@
 - name: Adding kindo user to docker group
   tags: ["docker"]
+  become: true
   ansible.builtin.user:
     name: kindo
     groups: docker
