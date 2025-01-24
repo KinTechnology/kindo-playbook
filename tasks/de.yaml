@@ -39,6 +39,9 @@
     url: "http://pkg.kintechnology.io/cutiepi-panel.dtbo"
     dest: "/boot/overlays/cutiepi-panel.dtbo"
     mode: '0755'
+    status_code:
+      - 200
+      - 304
 
 - name: Ensure dtoverlay=cutiepi-panel is present under the [all] block
   tags: ["de", "system"]
