@@ -20,6 +20,9 @@
     mode: '0644'
     owner: kindo
     group: kindo
+    status_code:
+      - 200
+      - 304
 
 - name: Setup autostart Kindo App
   tags: ["de", "system"]

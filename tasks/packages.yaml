@@ -25,6 +25,9 @@
     url: "http://pkg.kintechnology.io/dwm"
     dest: "/usr/local/bin/"
     mode: "0755"
+    status_code:
+      - 200
+      - 304
 
 - name: Install nocursor package
   become: true
@@ -33,6 +36,9 @@
     url: "http://pkg.kintechnology.io/nocursor"
     dest: "/usr/local/bin/"
     mode: "0755"
+    status_code:
+      - 200
+      - 304
 
 - name: Install Docker Engine
   become: true
