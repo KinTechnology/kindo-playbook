@@ -8,6 +8,7 @@
 
 - name: Autostart Docker
   tags: ["docker"]
+  become: true
   ansible.builtin.systemd:
     name: docker
     enabled: true
@@ -16,6 +17,7 @@
 
 - name: Autostart containerd
   tags: ["docker"]
+  become: true
   ansible.builtin.systemd:
     name: containerd
     enabled: true
