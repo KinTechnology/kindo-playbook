@@ -43,7 +43,7 @@ ansible-playbook main.yaml --tags docker --become -i inventory.ini
 ### Production
 
 ```bash
-curl -fssLO http://pkg.kintechnology.io/playbook | bash
+curl -fsL http://pkg.kintechnology.io/playbook | bash
 ```
 
 ## Contributing
