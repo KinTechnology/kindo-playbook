@@ -46,3 +46,7 @@
     - name: Setup Kindo App
       tags: ["kindo-app"]
       ansible.builtin.include_tasks: tasks/kindo-app.yaml
+
+    - name: Goodbye
+      tags: ["goodbye"]
+      ansible.builtin.include_tasks: tasks/goodbye.yaml

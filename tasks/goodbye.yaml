@@ -1,0 +1,4 @@
+- name: Goodbye
+  tags: ["goodbye"]
+  ansible.builtin.debug:
+    msg: "Congratulation for installing Kindo, Now you can restart the device."
