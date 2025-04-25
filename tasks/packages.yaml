@@ -12,8 +12,8 @@
     - xserver-xorg-input-libinput
     - wget
     - curl
-    - plymouth
-    - plymouth-themes
+    # - plymouth
+    # - plymouth-themes
     - stterm
     - suckless-tools
     - libasound-dev
