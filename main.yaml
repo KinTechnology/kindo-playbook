@@ -20,7 +20,7 @@
       ansible.builtin.include_tasks: tasks/packages.yaml
 
     - name: Create User Kindo
-      tags: ['user', 'system']
+      tags: ["user", "system"]
       ansible.builtin.include_tasks: tasks/user.yaml
 
     - name: Prequsites
@@ -38,6 +38,10 @@
     - name: Setup Uart
       tags: ["uart"]
       ansible.builtin.include_tasks: tasks/uart.yaml
+
+    - name: Setup Camera
+      tags: ["camera"]
+      ansible.builtin.include_tasks: tasks/camera.yaml
 
     - name: Setup boot animation - Plymouth
       tags: ["plymouth"]

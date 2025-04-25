@@ -5,7 +5,7 @@
     dest: /home/kindo/.bash_profile
     owner: kindo
     group: kindo
-    mode: '0644'
+    mode: "0644"
     content: |
       if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
         exec startx
@@ -17,7 +17,7 @@
   ansible.builtin.uri:
     url: "http://pkg.kintechnology.io/kin-1920x1080.png"
     dest: "/home/kindo/.local/share/kindo/wallpaper.png"
-    mode: '0644'
+    mode: "0644"
     owner: kindo
     group: kindo
     status_code:
@@ -31,9 +31,9 @@
     dest: /home/kindo/.xinitrc
     owner: kindo
     group: kindo
-    mode: '0644'
+    mode: "0644"
     content: |
-      exec kindo-app
+      exec startx
 
 - name: Add cutiepi-panel overlays file
   tags: ["de", "system"]
@@ -41,7 +41,7 @@
   ansible.builtin.uri:
     url: "http://pkg.kintechnology.io/cutiepi-panel.dtbo"
     dest: "/boot/overlays/cutiepi-panel.dtbo"
-    mode: '0755'
+    mode: "0755"
     status_code:
       - 200
       - 304
@@ -51,8 +51,8 @@
   become: true
   ansible.builtin.lineinfile:
     path: /boot/firmware/config.txt
-    regexp: '^dtoverlay=cutiepi-panel'
-    line: 'dtoverlay=cutiepi-panel'
+    regexp: "^dtoverlay=cutiepi-panel"
+    line: "dtoverlay=cutiepi-panel"
     insertafter: '\[all\]'
     state: present
 
@@ -61,12 +61,12 @@
   become: true
   ansible.builtin.copy:
     dest: /etc/X11/xorg.conf.d/40-libinput.conf
-    mode: '0644'
+    mode: "0644"
     content: |
       Section "InputClass"
         Identifier "libinput touchscreen catchall"
         MatchIsTouchscreen "on"
         MatchDevicePath "/dev/input/event*"
         Driver "libinput"
-        Option "CalibrationMatrix" "-1 0 1 0 -1 1 0 0 1"
+        Option "CalibrationMatrix" "1 0 0 0 -1 1 0 0 1"
       EndSection

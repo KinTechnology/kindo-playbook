@@ -3,5 +3,5 @@
     "*.yml": "ansible",
     "*.yaml": "ansible"
   },
-  "ansible.python.interpreterPath": "/home/admin/kinda-playbook/.venv/bin/python"
+  "ansible.python.interpreterPath": "/Users/sdk/Projects/kindo-playbook/.venv/bin/python"
 }

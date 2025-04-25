@@ -1,0 +1,17 @@
+- name: Ensure camera_auto_detect=1 is commented out
+  tags: ["camera"]
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: "^camera_auto_detect="
+    line: "#camera_auto_detect=1"
+    state: present
+
+- name: Enable camera
+  tags: ["camera"]
+  become: true
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    regexp: "^dtoverlay=ov5647,cam1"
+    line: "dtoverlay=ov5647,cam1"
+    state: present
