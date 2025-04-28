@@ -17,6 +17,9 @@
     - stterm
     - suckless-tools
     - libasound-dev
+    - modemmanager
+    - libmbim-utils
+    - libqmi-utils
 
 - name: Install dwm package
   become: true
