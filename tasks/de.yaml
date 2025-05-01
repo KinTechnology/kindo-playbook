@@ -1,15 +1,16 @@
-- name: Setup up autostart on tty1
-  tags: ["de", "system"]
-  become: true
-  ansible.builtin.copy:
-    dest: /home/kindo/.bash_profile
-    owner: kindo
-    group: kindo
-    mode: "0644"
-    content: |
-      if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
-        exec startx
-      fi
+# TODO: uncomment this when we have a way to start the desktop environment on tty1
+# - name: Setup up autostart on tty1
+#   tags: ["de", "system"]
+#   become: true
+#   ansible.builtin.copy:
+#     dest: /home/kindo/.bash_profile
+#     owner: kindo
+#     group: kindo
+#     mode: "0644"
+#     content: |
+#       if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+#         exec startx
+#       fi
 
 - name: Get the Kindo wallapaper
   tags: ["de", "system"]
